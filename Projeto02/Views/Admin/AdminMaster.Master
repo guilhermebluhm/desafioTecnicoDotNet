@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="Projeto02.Views.Admin.AdminMaster" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="../../Assets/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        *{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .left-menu 
+        {
+            height: 100vh;
+            background-color: black;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        label{
+            color: white;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2 left-menu p-4" style="padding-top:50px">
+                <div class="row" style="height:120px">
+
+                </div>
+                <div class="mb-2">
+                    <img src="../../Images/LoginImg.jpg" class="img-fluid m-2" height="75" width="75"/>
+                    <a href="#"><label>Associados</label></a>
+                </div>
+                <div class="mb-2">
+                    <img src="../../Images/LoginImg.jpg" class="img-fluid m-2" height="75" width="75"/>
+                    <a href="#"><label>Empresa</label></a>
+                </div>
+                <div class="mb-2" style="margin-top:30vh">
+                    <img src="../../Images/LoginImg.jpg" class="img-fluid m-2" height="75" width="75"/>
+                    <a href="#"><label>Logout</label></a>
+                </div>
+            </div>
+
+            <div class="col-10">
+            <form id="form1" runat="server">
+                <div>
+                    <asp:ContentPlaceHolder ID="myMasterPage" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+           </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
