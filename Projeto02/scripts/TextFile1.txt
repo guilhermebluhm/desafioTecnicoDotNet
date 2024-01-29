@@ -1,0 +1,21 @@
+﻿CREATE TABLE [dbo].[Associados] (
+    [Id]             INT           IDENTITY (1, 1) NOT NULL,
+    [Nome]           VARCHAR (200) NOT NULL,
+    [Cpf]            VARCHAR (11)  NOT NULL,
+    [DataNascimento] DATETIME      NULL,
+    CONSTRAINT [PK_Table] PRIMARY KEY CLUSTERED ([Cpf] ASC)
+);
+
+CREATE TABLE [dbo].[Empresas] (
+    [Id]   INT           IDENTITY (1, 1) NOT NULL,
+    [Nome] VARCHAR (200) NOT NULL,
+    [Cnpj] VARCHAR (14)  NOT NULL,
+    CONSTRAINT [PK_Empresas] PRIMARY KEY CLUSTERED ([Cnpj] ASC)
+);
+
+CREATE TABLE [dbo].[AssociadosEmpresas] (
+    [IdAssociados] VARCHAR (11) NOT NULL,
+    [idEmpresas]   VARCHAR (14) NOT NULL,
+    CONSTRAINT [FK_AssociadosEmpresas_Associados] FOREIGN KEY ([IdAssociados]) REFERENCES [dbo].[Associados] ([Cpf]),
+    CONSTRAINT [FK_AssociadosEmpresas_Empresas] FOREIGN KEY ([idEmpresas]) REFERENCES [dbo].[Empresas] ([Cnpj])
+);
