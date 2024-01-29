@@ -15,33 +15,38 @@
           <div class="col-4 mt-5 p-4 border" style="padding-left:5vh; width:50vh;">
               <div class="mt-1">
               <label for="" class="form-label text-success"><strong>Nome Empresa</strong></label>
-              <input type="text" pattern="[a-zA-Z]+$" required="required" title="Só letras minúsculas entre [a-zA-Z]" 
-                  placeholder="informe a razao social" autocomplete="off" style="width:350px;" class="form-control" />
+              <input type="text" pattern="^[a-zA-Z ]+$" required="required" title="Só letras minúsculas entre [a-zA-Z]" 
+                  placeholder="informe a razao social" autocomplete="off" style="width:350px;" class="form-control" runat="server" id="formNomeEmpresa"/>
               </div>
 
               <div class="mt-3">
               <label for="" class="form-label text-success"><strong>CNPJ Empresa</strong></label>
               <input type="text" pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}" title="Informe um CNPJ válido (00.000.000/0000-00)"  
-                  placeholder="CNPJ..." autocomplete="off" class="form-control" required="required" style="width:350px;" />
+                  placeholder="CNPJ..." autocomplete="off" class="form-control" required="required" style="width:350px;" runat="server" id="formCnpjEmpresa"/>
               </div>
 
-               <div class="mt-3">
+              <div class="mt-3">
               <label for="" class="form-label text-success"><strong>Associado vinculado</strong></label>
-              <asp:DropDownList ID="DropDownList1" runat="server" style="width:350px;" class="form-control"></asp:DropDownList>
+              <asp:DropDownList runat="server" style="width:350px;" class="form-control" id="formAssociadoVinculado"></asp:DropDownList>
+              <asp:Label runat="server" ID="errMessage" class="text-danger"></asp:Label>
+              </div>
+
+              <div class="mt-3">
+              <asp:CheckBox ID="insercaoMultipla" Text="Insercao Multipla" BackColor="Black" class="form-check-input" runat="server"/>
               </div>
 
               <div class="row">
                 <div class="d-flex justify-content-between mt-4">
-                    <asp:Button runat="server" Text="Remover" class="btn-outline-secondary btn"/>
-                    <asp:Button runat="server" Text="Adicionar" class="btn-outline-secondary btn"/>
-                    <asp:Button runat="server" Text="Atualizar" class="btn-outline-secondary btn"/>
+                    <asp:Button runat="server" Text="Remover" ID="btnRemover" class="btn-outline-secondary btn" OnClick="btnRemover_Click"/>
+                    <asp:Button runat="server" Text="Adicionar" ID="btnSalvar" class="btn-outline-secondary btn" OnClick="btnSalvar_Click"/>
+                    <asp:Button runat="server" Text="Atualizar" ID="btnEditar" class="btn-outline-secondary btn" OnClick="btnEditar_Click"/>
                 </div>
               </div>
 
           </div>
 
-          <div class="col-md-8">
-              <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+          <div class="col-md-8 mt-4 p-4" style="position: relative; float: right; width: 50%; margin-left: 50px">
+              <asp:GridView ID="EmpresasList" class="table table-bordered table-striped table-hover" runat="server" AutoGenerateSelectButton="True" OnSelectedIndexChanged="EmpresasList_SelectedIndexChanged"></asp:GridView>
           </div>
 
 
